@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    overscroll-behavior: none;
+  }
+  main > :first-child {
+    margin-top: 0 !important;
+  }
+  main > :last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---------- Marquee ---------- */
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+@keyframes scrollRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: scrollLeft 35s linear infinite;
+}
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: scrollRight 35s linear infinite;
+}
+.soft-blur-marquee {
+  filter: blur(1.2px);
+  -webkit-filter: blur(1.2px);
+}
+
+/* ---------- Scroll reveal: fade + pop up + blur tipis ----------
+   Atur tampilannya lewat 4 variabel ini. */
+:root {
+  --reveal-distance: 32px; /* jarak naik dari bawah */
+  --reveal-scale: 0.96; /* ukuran awal (pop up) */
+  --reveal-blur: 6px; /* blur awal */
+  --reveal-duration: 800ms;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(var(--reveal-distance)) scale(var(--reveal-scale));
+  filter: blur(var(--reveal-blur));
+  transition:
+    opacity var(--reveal-duration) cubic-bezier(0.22, 1, 0.36, 1),
+    transform var(--reveal-duration) cubic-bezier(0.22, 1, 0.36, 1),
+    filter var(--reveal-duration) cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform, filter;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+}
+
+/* ---------- Loading screen ---------- */
+@keyframes logoPopIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.82) translateY(6px);
+  }
+  70% {
+    opacity: 0.95;
+    transform: scale(1.03) translateY(-1px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+@keyframes textFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes barFadeIn {
+  0% {
+    opacity: 0;
+    transform: scaleX(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+@keyframes progressFill {
+  0% {
+    width: 0%;
+    transform: translateX(-10%);
+    opacity: 0.8;
+  }
+  50% {
+    width: 65%;
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    transform: translateX(0%);
+    opacity: 0.95;
+  }
+}
+@keyframes pulseSoft {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.04);
+  }
+}
+.animate-logo-popup {
+  animation: logoPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.animate-text-reveal {
+  animation: textFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
+}
+.animate-bar-reveal {
+  animation: barFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+}
+/* Jalan sekali sampai penuh (tidak diulang). Setelah penuh, web langsung tampil. */
+.animate-progress {
+  animation: progressFill 2.2s cubic-bezier(0.65, 0, 0.35, 1) 0.6s 1 forwards;
+}
+.animate-ambient-glow {
+  animation: pulseSoft 4s ease-in-out infinite;
+}

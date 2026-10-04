@@ -6,8 +6,8 @@ import { certificates } from "./certificates";
 /**
  * Bahan pengetahuan chatbot. Dipakai HANYA di server (api/chat).
  * Proyek, pengalaman, sertifikat, dan kontak diambil otomatis dari file data,
- * jadi kalau kamu edit data itu, chatbot ikut update.
- * Bagian PROFILE_AND_CV di bawah ditulis manual dari CV: edit di sini kalau CV berubah.
+ * jika edit data , chatbot ikut update.
+
  */
 
 const PROFILE_AND_CV = `
@@ -18,7 +18,7 @@ PROFIL
 - Ringkasan: mahasiswa Computer Science peminatan Intelligent Systems dengan pengalaman membangun solusi machine learning, NLP, dan computer vision, serta aplikasi web yang sudah di-deploy memakai Python, React, Next.js, dan TypeScript. Berpengalaman di tim Agile Scrum (preprocessing data, pengembangan model, frontend dan full-stack). Mencari peluang sebagai Software Engineer dan AI Engineer.
 
 PENDIDIKAN
-- BINUS University, 2024 - sekarang. Bachelor of Computer Science (Intelligent Systems), GPA 3.52 / 4.00.
+- BINUS University, 2024 - sekarang. Bachelor of Computer Science (Intelligent Systems), GPA 3.62 / 4.00.
 - Mata kuliah relevan: Machine Learning, Deep Learning, Computer Vision, Software Engineering.
 - Juara 1 Business Idea Competition, Binus Festival 2025 (konsep bisnis berbasis teknologi).
 

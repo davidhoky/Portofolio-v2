@@ -95,7 +95,7 @@ export default function About() {
                   </div>
                   <div className="flex flex-col">
                     <span className={labelClass}>GPA</span>
-                    <span className={valueClass}>3.52</span>
+                    <span className={valueClass}>3.62</span>
                   </div>
                   <div className="flex flex-col">
                     <span className={labelClass}>EMAIL</span>
